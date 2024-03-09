@@ -1,0 +1,11 @@
+* CLI Proxy 
+Project aims to be a single-signon management platform for CLI-based network systems. 
+** Desired Features
+*** DONE "Southbound" SSH Client
+CLOSED: [2024-03-06 Wed 20:29]
+*** DONE TUI Frontend 
+CLOSED: [2024-03-06 Wed 20:30]
+**** https://github.com/c-bata/go-prompt
+*** TODO Device Discovery
+*** TODO Session Logging
+*** TODO Database Storage 

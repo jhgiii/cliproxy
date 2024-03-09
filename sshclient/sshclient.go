@@ -2,7 +2,6 @@ package sshclient
 
 import (
 	"fmt"
-	"io"
 	"log"
 	"os"
 
@@ -11,14 +10,14 @@ import (
 )
 
 func Connect(config ssh.ClientConfig, server string) error {
-	key, err := os.ReadFile("/Users/jim/.ssh/id_rsa")
+	key, err := os.ReadFile("/home/jim/.ssh/id_rsa")
 	if err != nil {
-		log.Fatalf("unable to read private key: %v ", err)
+		return err
 	}
 
 	signer, err := ssh.ParsePrivateKey(key)
 	if err != nil {
-		log.Fatalf("unable to parse private key: %v ", err)
+		return err
 	}
 	config.User = "jim"
 	config.Auth = []ssh.AuthMethod{
@@ -30,13 +29,13 @@ func Connect(config ssh.ClientConfig, server string) error {
 	fmt.Println(server)
 	conn, err := ssh.Dial("tcp", server, &config)
 	if err != nil {
-		panic("Failed to dial: " + err.Error())
+		return err
 	}
 	defer conn.Close()
 
 	session, err := conn.NewSession()
 	if err != nil {
-		panic("Failed to create session: " + err.Error())
+		return err
 	}
 	defer session.Close()
 
