@@ -2,25 +2,45 @@ package arista
 
 import (
 	"encoding/json"
-	"fmt"
+	"io"
 	"net/netip"
 )
 
+var validConnectMethods = [...]string{"ssh", "rest", "cvp"}
+
 type Arista struct {
-	Hostname string
-	IP       netip.Addr
+	Hostname      string
+	IP            netip.Addr
+	ConnectMethod string
 }
 
-func (a *Arista) DiscoverIPAddresses() {
+func NewArista(hostname, ip, connectmethod string) (Arista, error) {
+	var a Arista
+	a.Hostname = hostname
+	var err error
+	a.IP, err = netip.ParseAddr(ip)
+	if err != nil {
+		return a, err
+	}
+	a.ConnectMethod = connectmethod
+	return a, nil
+}
+func (a *Arista) DiscoverIPAddresses() error {
 	// TODO
+
+	return nil
 }
 
-func parseIPFromCli(b []byte) ([]netip.Addr, error) {
+func parseIPFromCli(r io.Reader) ([]netip.Addr, error) {
 	var address []netip.Addr
 	var Ints ResponseShowIntBrief
-	err := json.Unmarshal(b, &Ints)
+	rd, err := io.ReadAll(r)
 	if err != nil {
-		fmt.Println(err)
+		return nil, err
+	}
+	err = json.Unmarshal(rd, &Ints)
+	if err != nil {
+		return nil, err
 	}
 
 	for _, i := range Ints.Interfaces {

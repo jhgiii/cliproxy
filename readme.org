@@ -3,9 +3,25 @@ Project aims to be a single-signon management platform for CLI-based network sys
 ** Desired Features
 *** DONE "Southbound" SSH Client
 CLOSED: [2024-03-06 Wed 20:29]
-*** DONE TUI Frontend 
-CLOSED: [2024-03-06 Wed 20:30]
+*** TODO TUI Frontend
 **** https://github.com/c-bata/go-prompt
 *** TODO Device Discovery
 *** TODO Session Logging
-*** TODO Database Storage 
+*** TODO Database Storage
+** Driver Development
+*** TODO Arista [0/3]
+**** TODO REST API
+**** TODO CLI Scraping
+**** TODO Cloud Vision
+*** TODO Cisco [0/6]
+**** TODO IOS-XE
+**** TODO NX-OS
+**** TODO CLI Scraping
+**** TODO API
+**** TODO ASA
+**** TODO ACI?
+*** TODO Juniper [0/3]
+**** TODO Netconf?
+**** TODO CLI Scraping
+**** TODO REST API
+** Build single threaded version first
