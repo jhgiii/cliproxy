@@ -10,7 +10,7 @@ import (
 )
 
 func Connect(config ssh.ClientConfig, server string) error {
-	key, err := os.ReadFile("/home/jim/.ssh/id_rsa")
+	key, err := os.ReadFile("/Users/jim/.ssh/id_rsa")
 	if err != nil {
 		return err
 	}

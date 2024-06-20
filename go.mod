@@ -4,6 +4,7 @@ go 1.18
 
 require (
 	github.com/c-bata/go-prompt v0.2.6
+	github.com/mattn/go-sqlite3 v1.14.22
 	golang.org/x/crypto v0.21.0
 	golang.org/x/term v0.18.0
 )
